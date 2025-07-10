@@ -8,7 +8,7 @@ export default function App({ Component }: PageProps) {
         <title>citopoly</title>
         <link rel="stylesheet" href="/styles.css" />
       </head>
-      <body>
+      <body f-client-nav>
         <Component />
       </body>
     </html>
