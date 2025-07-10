@@ -3,15 +3,15 @@ import ChatPanel from "../components/ChatPanel.tsx";
 import PlayersPanel from "../components/PlayersPanel.tsx";
 import TradesPanel from "../components/TradesPanel.tsx";
 import { Partial } from "$fresh/runtime.ts";
+import { RouteContext } from "$fresh/server.ts";
 
-export default function Home(req: Request) {
-  // Panel switching via query
-  const url = new URL(req.url);
-  const panelNum = Number(url.searchParams.get("panel") ?? "1");
-  let PanelComp;
+export default function Home(_: Request, ctx: RouteContext) {
+
+  //const panelNum = Number(ctx.params.panel) || 1;
+  /*let PanelComp;
   if (panelNum === 2) PanelComp = PlayersPanel;
   else if (panelNum === 3) PanelComp = TradesPanel;
-  else PanelComp = ChatPanel;
+  else PanelComp = ChatPanel;*/
 
   return (
     <div class="min-h-screen bg-[#222]">
@@ -32,22 +32,22 @@ export default function Home(req: Request) {
           <GameBoard />
         </div>
         <div class="flex gap-2 mb-4 w-full max-w-xl mx-auto">
-          <a href="/?panel=1" f-partial="panel"
-            class={`flex-1 text-center rounded-t-lg px-4 py-2 font-medium ${panelNum === 1 ? "bg-blue-700 text-white" : "bg-[#181818] text-gray-300"}`}>
+          <a href="/panel1" f-partial="/partials/panel1"
+            class={`flex-1 text-center rounded-t-lg px-4 py-2 font-medium `}>
             Panel 1
           </a>
-          <a href="/?panel=2" f-partial="panel"
-            class={`flex-1 text-center rounded-t-lg px-4 py-2 font-medium ${panelNum === 2 ? "bg-blue-700 text-white" : "bg-[#181818] text-gray-300"}`}>
+          <a href="/panel2" f-partial="/partials/panel2"
+            class={`flex-1 text-center rounded-t-lg px-4 py-2 font-medium`}>
             Panel 2
           </a>
-          <a href="/?panel=3" f-partial="panel"
-            class={`flex-1 text-center rounded-t-lg px-4 py-2 font-medium ${panelNum === 3 ? "bg-blue-700 text-white" : "bg-[#181818] text-gray-300"}`}>
+          <a href="/panel3" f-partial="/partials/panel3"
+            class={`flex-1 text-center rounded-t-lg px-4 py-2 font-medium`}>
             Panel 3
           </a>
         </div>
         <div class="w-full max-w-xl mx-auto">
           <Partial name="panel">
-            <PanelComp />
+            <div>This is the first view of the panel</div>
           </Partial>
         </div>
       </div>
