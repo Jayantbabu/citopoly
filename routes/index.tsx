@@ -3,9 +3,8 @@ import ChatPanel from "../components/ChatPanel.tsx";
 import PlayersPanel from "../components/PlayersPanel.tsx";
 import TradesPanel from "../components/TradesPanel.tsx";
 import { Partial } from "$fresh/runtime.ts";
-import { RouteContext } from "$fresh/server.ts";
 
-export default function Home(_: Request, ctx: RouteContext) {
+export default function Home() {
 
   //const panelNum = Number(ctx.params.panel) || 1;
   /*let PanelComp;
